@@ -21,44 +21,260 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# BACK livewire
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Instalar BackEnd
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+       composer create-project laravel/laravel example_liveware 8.6 --prefer-dist
 
-### Premium Partners
+## Configurar variables de entorno .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 
-## Contributing
+## Modulos    
+ - SLIDER
+ - CARD
+ - TEXIMG
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Diseño TABLAS
 
-## Code of Conduct
+## SLIDER
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    img	title	text	btn	btntext
+    
+## CARD
 
-## Security Vulnerabilities
+    img title  text  btn  btntext
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## TEXTIMG
 
-## License
+    img title  text
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Crear migrates
+
+    php artisan make:migration create_slider_table
+
+    php artisan make:migration create_card_table
+
+    php artisan make:migration create_textimg_table
+    
+
+ ## add migration SLIDER
+
+     <?php
+
+    use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
+    
+    class CreateSliderTable extends Migration
+    {
+        /**
+         * Run the migrations.
+         *
+         * @return void
+         */
+        public function up()
+        {
+            Schema::create('slider', function (Blueprint $table) {
+                $table->id();
+                $table->string('img');  // add
+                $table->string('title');  // add
+                $table->string('text');  // add
+                $table->string('btn');  // add
+                $table->string('btntext');  // add
+                $table->timestamps();
+            });
+        }
+
+        /**
+         * Reverse the migrations.
+         *
+         * @return void
+         */
+        public function down()
+        {
+            Schema::dropIfExists('slider');
+        }
+    }
+## add migration CARD
+
+        <?php
+
+        use Illuminate\Database\Migrations\Migration;
+        use Illuminate\Database\Schema\Blueprint;
+        use Illuminate\Support\Facades\Schema;
+        
+        class CreateCardTable extends Migration
+        {
+            /**
+             * Run the migrations.
+             *
+             * @return void
+             */
+            public function up()
+            {
+                Schema::create('card', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('img');  // add
+                    $table->string('title');  // add
+                    $table->string('text');  // add
+                    $table->string('btn');  // add
+                    $table->string('btntext');  // add
+                    $table->timestamps();
+                });
+            }
+        
+            /**
+             * Reverse the migrations.
+             *
+             * @return void
+             */
+            public function down()
+            {
+                Schema::dropIfExists('card');
+            }
+        }
+
+
+## ADD migrate textimg
+        <?php
+
+        use Illuminate\Database\Migrations\Migration;
+        use Illuminate\Database\Schema\Blueprint;
+        use Illuminate\Support\Facades\Schema;
+        
+        class CreateTextimgTable extends Migration
+        {
+            /**
+             * Run the migrations.
+             *
+             * @return void
+             */
+            public function up()
+            {
+                Schema::create('textimg', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('img');  // add
+                    $table->string('title');  // add
+                    $table->string('text');  // add
+                    $table->timestamps();
+                });
+            }
+        
+            /**
+             * Reverse the migrations.
+             *
+             * @return void
+             */
+            public function down()
+            {
+                Schema::dropIfExists('textimg');
+            }
+        }
+
+ ## invocar MIGRATE para actualizar datos
+        php artisan migrate
+
+## Instalar Livewire Crud Generator
+        composer require flightsadmin/livewire-crud
+
+## Instalar CRUD
+        php artisan crud:install
+
+## CREANDO CRUD CON TABLA SLIDER
+        php artisan crud:generate slider
+
+## NOTAS 
+    -VERIFICAR EL NOMBRE DE LA TABLA CON CONTROLLER
+    -ROUTE
+    -MODEL
+    
+## INCORPORAR EL FRONT
+Crear una view principal en la carpeta views, puedes guiarte con la vista default de home
+
+## Administracion de secciones de las vistas
+ -Directorios
+ 
+ Resources>views>loyouts
+  Archivo
+  -app.blade.php
+
+## Arquitectura HTML (index.blade.php)
+      <HTML>
+            <head>
+        	<meta>
+        	<link> 
+        	<script>
+        </head>
+        <body>
+        	<header>
+        		<nav>
+        		</hav>
+        	</header>
+        	<main>
+        	    @yield('content') -> bloque de content
+        	</main>    	
+        </body>  
+      </HTML>  
+        
+## Arquitectura  de content views>layouts>  (library.blade.php)
+    @extends('layouts.app') -> llama al archivo app.blade.php
+    @section('content') -> iniciacion del bloque content
+    	-- add contenido html
+    @endsection
+Notas: Se puede agrear secciones como footer o alguna seccion
+
+## CSS O STYLES
+       Colocar estos estilos en
+        
+        public>css
+## diferenciar el nav de laravel con el del FRONT
+
+    En @extends('layouts.library') colocar los html del nav de menu del back
+    
+    En: Resources/views/auth ->login.blade.php , register.blade.php , verify.blade.php
+
+    app.blade.php
+    nav del front
+## Recorrer dato slider
+
+## Creacion de una ruta
+    Route::get('/', [App\Http\livewire\Sliders::class, 'index'])->name('index');
+
+    -index es la vista
+    -index el metodo que se encuentra en Sliders
+
+    En app/httpLivewire/
+
+## En Slider agregar el metodo de index()
+
+     public function index()
+    {
+        $sliders = Slider::all(); //select * from sliders
+        return view('index', compact('sliders')); // manda en la variable sliders el rsultado de la consulta en la vista index
+
+
+    }
+## Recorrido en vista index
+    @foreach($sliders as $slider)
+        <div class="carousel-item active">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
+            <rect width="100%" height="100%" fill="#777" /></svg>
+
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ $slider->title }}</h1>
+              <p>{{ $slider->text }}</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">{{ $slider->btntext }}</a></p>
+            </div>
+          </div>
+        </div>
+     @endforeach
+
+    
+
+
+        
